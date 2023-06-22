@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-
+import { Pokemon } from "../interfaces/Pokemon";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Search = () => {
   const [pokemonForm, setpokemonForm] = useState("");
@@ -9,7 +11,6 @@ const Search = () => {
   const [img, setImg] = useState("");
 
   const fetchPokemonList = async (name: string) => {
-    console.log("Buscanodo...");
     if (pokemonForm != "") {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -26,15 +27,18 @@ const Search = () => {
         });
     } else {
       console.log("Escribe algo");
+      setIsSearch(false);
+      setPokemon("")
     }
   };
 
   return (
     <>
+    <Header/>
+    <h2>Buscar</h2>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          console.log("Submit");
           fetchPokemonList(pokemonForm.toLocaleLowerCase());
         }}
       >
@@ -49,7 +53,7 @@ const Search = () => {
         <button type="submit">Buscar</button>
       </form>
       {!isSearch ? (
-        <p id="notPokemonTxt">No se ha encontrado el pokemon</p>
+        <p id="notPokemonTxt" className="text-red">No se ha encontrado el pokemon</p>
       ) : (
        ""
       )}
@@ -57,6 +61,7 @@ const Search = () => {
 {
   pokemon != "" ? <img id="img" src={img}></img> : ""
 }
+<Footer/>
     </>
   );
 };
