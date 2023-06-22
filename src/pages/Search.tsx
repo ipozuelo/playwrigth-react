@@ -34,7 +34,6 @@ const Search = () => {
 
   return (
     <>
-    <Header/>
     <h2>Buscar</h2>
       <form
         onSubmit={(event) => {
@@ -61,7 +60,6 @@ const Search = () => {
 {
   pokemon != "" ? <img id="img" src={img}></img> : ""
 }
-<Footer/>
     </>
   );
 };

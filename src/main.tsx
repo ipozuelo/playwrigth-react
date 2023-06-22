@@ -5,11 +5,14 @@ import "./index.css";
 import { FirebaseAppProvider } from "reactfire";
 
 import { firebaseConfig } from "./config/firebase.ts";
-import {router} from './config/router.tsx'
-import {RouterProvider} from 'react-router-dom'
+import { router } from "./config/router.tsx";
+import { RouterProvider } from "react-router-dom";
+import { UserProvider } from "./context/userContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </FirebaseAppProvider>
 );

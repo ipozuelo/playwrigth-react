@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 
 
 
@@ -24,4 +24,8 @@ export const login = ({email, password }: any) =>{
 
 export const register = ({email, password }: any) =>{
   return createUserWithEmailAndPassword(auth, email,password)
+}
+
+export const logOut = () =>{
+  return signOut(auth)
 }
