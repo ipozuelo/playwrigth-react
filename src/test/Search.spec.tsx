@@ -31,7 +31,14 @@ test("img", async ({ mount }) => {
   await expect(img).toBeEnabled()
 });
 
-test.describe("responsive", () => {
+test.describe("variety", () => {
+
+  test("search-pokemon", async ({ mount }) => {
+    const component = await mount(<Search />);
+    await component.locator("input").fill("pikachu");
+    await component.locator("button").click();
+    await component.locator("img");
+  });
 
   test('responsive-movil',async ({mount,page}) => {
     const component = await mount(<Search/>)
